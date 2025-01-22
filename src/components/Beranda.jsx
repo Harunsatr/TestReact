@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import Pemain from '../assets/img/Pemain.png';
 import Gambar1 from '../assets/img/Gambar1.png';
 import Gambar2 from '../assets/img/Gambar2.png';
@@ -14,6 +14,23 @@ import Berita8 from '../assets/img/Berita8.png';
 import TigaGambar from '../assets/img/TigaGambar.png';
 
 export const Beranda = () => {
+        const [Berita, setBerita] = useState([]);
+    
+        useEffect(() => {
+            const fetchBerita = async () => {
+            try {
+                const response = await fetch(
+                "https://api-berita-indonesia.vercel.app/antara/terbaru"
+                );
+                const data = await response.json();
+                setBerita(data.data.posts.slice(0, 6) || []);
+            } catch (error) {
+                console.error("Error fetching Berita:", error);
+            }
+            };
+    
+            fetchBerita();;
+        }, []);
     return (
         <>
             {/* Konten utama headline */}
@@ -54,83 +71,46 @@ export const Beranda = () => {
 
             {/* Konten Berita Terpopuler */}
             <div className="popular-news-container">
-                <h2 className="section-title">Berita Terpopuler</h2>
-                <div className="popular-news-list">
-                    <div className="popular-news-item">
-                        <div className="news-number">1</div>
-                        <img
-                            src={Gambar1}
-                            alt="Berita 1"
-                            className="news-image"
-                        />
-                        <div className="news-content">
-                            <p className="news-title">
-                                Kenapa Eks Jenderal Israel Kritik Cara IDF Bebaskan 4 Sandera Hamas?
-                            </p>
-                            <p className="news-category">Politik &bull; 22 Jan 2024</p>
-                        </div>
-                    </div>
-                    <div className="popular-news-item">
-                        <div className="news-number">2</div>
-                        <img
-                            src={Gambar2}
-                            alt="Berita 2"
-                            className="news-image"
-                        />
-                        <div className="news-content">
-                            <p className="news-title">
-                                Daftar 6 Lahan Tambang Jatah Ormas Agama, NU Dapat Bekas Grup Bakrie
-                            </p>
-                            <p className="news-category">Nasional &bull; 22 Jan 2024</p>
-                        </div>
-                    </div>
-                    <div className="popular-news-item">
-                        <div className="news-number">3</div>
-                        <img
-                            src={Gambar3}
-                            alt="Berita 3"
-                            className="news-image"
-                        />
-                        <div className="news-content">
-                            <p className="news-title">
-                                Kementerian BUMN Mulai Uji Coba Pegawai Kerja 4 Hari Sepekan
-                            </p>
-                            <p className="news-category">Nasional &bull; 22 Jan 2024</p>
-                        </div>
-                    </div>
+            <h2 className="section-title">Berita Terpopuler</h2>
+            <div className="sidebar-popular-news-list">
+            {Berita.map((item, index) => (
+                <div className="sidebar-popular-news-item">
+                <div className="sidebar-news-number">1</div>
+                <img src={item.thumbnail} alt="Berita 1" className="sidebar-news-image" />
+                <div className="sidebar-news-content">
+                    <p className="sidebar-news-title">{item.title}
+                    </p>
+                    <p className="sidebar-news-category">
+                    Politik &bull; {item.pubDate}
+                    </p>
+                </div>
+                </div>
+            ))}
                 </div>
             </div>
 
             {/* Konten Rekomendasi */}
             <div className="recommendations-container">
-                <h2 className="section-title">Rekomendasi Untuk Anda</h2>
-                <div className="recommendations-grid">
-                    {/* Daftar Berita */}
-                    {[
-                        { id: 1, img: Berita1, title: "Pj. Gubernur Adhy Tekankan Pelayanan Berkualitas", category: "Nasional" },
-                        { id: 2, img: Berita2, title: "Flypass Bonanza dan Heli Bell Warnai Tupdik TNI", category: "Nasional" },
-                        { id: 3, img: Berita3, title: "Perwira Penerbangan TNI AL Raih Gelar 'Double Degree'", category: "Nasional" },
-                        { id: 4, img: Berita4, title: "Bank Jatim QRIS Ramadan Vanganza Dibuka", category: "Nasional" },
-                        { id: 5, img: Berita5, title: "PLN Sukses Lakukan Pemeliharaan 2 Tahunan", category: "Nasional" },
-                        { id: 6, img: Berita6, title: "Bantu Pertahanan Indonesia, ITS Ciptakan Antiradar", category: "Nasional" },
-                        { id: 7, img: Berita7, title: "BKD Jatim Gelar Tes Narkoba Bagi Pegawai Non ASN", category: "Nasional" },
-                        { id: 8, img: Berita8, title: "Bank Indonesia Prediksi Ekonomi Jatim Tumbuh Lebih Tinggi", category: "Nasional" },
-                    ].map((berita) => (
-                        <div className="recommendation-item" key={berita.id}>
+            <h2 className="related-news-title">Rekomendasi Untuk Anda
+                    </h2>
+                    <div className="related-news-grid">
+                            {Berita.map((item, index) => (
+                        <div className="related-news-item" key={item.id}>
                             <img
-                                src={berita.img}
-                                alt={`Berita ${berita.id}`}
-                                className="recommendation-image"
+                                src={item.thumbnail}
+                                alt={`Berita ${item.id}`}
+                                className="related-news-image"
                             />
-                            <div className="recommendation-content">
-                                <p className="recommendation-title">{berita.title}</p>
-                                <p className="recommendation-category">
-                                    {berita.category} &bull; 22 Jan 2024
+                            <div className="related-news-content">
+                                <p className="related-news-title-text">{item.title}</p>
+                                <p className="related-news-meta">
+                                    <span className="related-news-category">Terbaru</span> &bull;{" "}
+                                    <span className="related-news-date">{item.pubDate}</span>
                                 </p>
                             </div>
                         </div>
                     ))}
-                </div>
+                    </div>
                 {/* Navigasi Pagination */}
                 <div className="pagination-container">
                     {/* Informasi dan Navigasi Pagination */}
