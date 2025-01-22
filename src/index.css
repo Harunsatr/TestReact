@@ -1120,39 +1120,63 @@ body {
     width: 100%;
   }
 }
-
-/* Komentar */
+/* Komentar Section */
 .comments-section {
   margin-top: 40px;
+  padding: 20px;
   background-color: #ffffff;
   border-radius: 10px;
 }
 
 .comments-title {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: bold;
+  border-left: 4px solid #007BFF;
+  padding-left: 10px;
   margin-bottom: 20px;
 }
 
+/* Form Komentar */
 .comment-form {
+  margin-bottom: 30px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-bottom: 30px;
 }
 
-.comment-form textarea {
-  width: 100%;
-  height: 100px;
+.comment-form-header {
+  display: flex;
+  gap: 10px;
+}
+
+.comment-user-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 20%;
+}
+
+.comment-textarea {
+  flex: 1;
+  height: 80px;
   padding: 10px;
-  font-size: 0.875rem;
   border: 1px solid #ccc;
   border-radius: 5px;
+  font-size: 0.875rem;
   resize: none;
 }
 
-.comment-form .btn-submit {
-  align-self: flex-start;
+.comment-form-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.char-counter {
+  font-size: 0.75rem;
+  color: #555;
+}
+
+.btn-submit {
   padding: 10px 20px;
   background-color: #007BFF;
   color: #fff;
@@ -1161,47 +1185,275 @@ body {
   cursor: pointer;
 }
 
-.comment-form .btn-submit:hover {
+.btn-submit:hover {
   background-color: #0056b3;
 }
 
+/* Daftar Komentar */
 .comments-list {
   list-style: none;
   padding: 0;
 }
 
 .comment-item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   margin-bottom: 20px;
   border-bottom: 1px solid #eee;
   padding-bottom: 10px;
 }
 
-.comment-user {
+.comment-user-details {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.comment-user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 20%;
+}
+
+.comment-user-name {
+  font-size: 1rem;
   font-weight: bold;
-  font-size: 0.875rem;
-  margin-bottom: 5px;
-  color: #555;
+}
+
+.comment-date {
+  font-size: 0.75rem;
+  color: #888;
 }
 
 .comment-text {
   font-size: 0.875rem;
-  margin-bottom: 5px;
+  margin-left: 50px;
 }
 
 .comment-reply {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   color: #007BFF;
   text-decoration: none;
+  margin-left: 50px;
 }
 
 .comment-reply:hover {
   text-decoration: underline;
 }
 
+/* Balasan Komentar */
+.reply-item {
+  padding-left: 50px; /* Indentasi balasan */
+  border-left: 2px solid #ffffff; /* Garis vertikal untuk menandai balasan */
+}
+
+.comment-user-details {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.comment-user-details .comment-text {
+  margin-top: 5px; /* Beri jarak antara tanggal dan teks */
+}
+
+.comment-text {
+  font-size: 0.875rem;
+  margin-left: 0; /* Hilangkan margin pada balasan */
+}
+
 /* Responsif */
 @media (max-width: 768px) {
   .comments-section {
-    padding: 10px;
+    padding: 15px;
+  }
+
+  .comment-user-image,
+  .comment-user-avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .replies-list {
+    padding-left: 30px; /* Sesuaikan indentasi untuk perangkat kecil */
   }
 }
 
+/* Pagination Section */
+.pagination-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-top: 1px solid #eee;
+  margin-top: 20px;
+  font-size: 0.875rem;
+  color: #555;
+}
+
+/* Pagination Info */
+.pagination-info {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex: 1;
+}
+
+/* Pagination Controls */
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.pagination-select {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.pagination-button {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.pagination-button:disabled {
+  color: #aaa;
+  border-color: #ddd;
+  cursor: not-allowed;
+}
+
+.pagination-number {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  background: #fff;
+}
+
+.pagination-number.active {
+  background: #007BFF;
+  color: #fff;
+  border-color: #007BFF;
+}
+
+.pagination-button:hover:not(:disabled),
+.pagination-number:hover:not(.active) {
+  background: #f0f0f0;
+}
+
+/* Container Berita Terkait */
+.related-news-container {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+/* Header Berita Terkait */
+.related-news-header {
+  display: flex;
+  justify-content: space-between; /* Memastikan judul dan tombol berada di sisi kiri dan kanan */
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.related-news-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-left: 4px solid #007BFF;
+  padding-left: 10px;
+  color: #000;
+}
+
+.related-news-view-more {
+  font-size: 1rem;
+  color: #007BFF;
+  background: none;
+  margin-left: 350px;
+  border: 1px solid #007BFF;
+  border-radius: 5px;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.related-news-view-more:hover {
+  background-color: #0073ef;
+  color: #fff;
+}
+
+/* Grid Layout */
+.related-news-grid {
+  display: grid;
+  margin-top: 30px;
+  grid-template-columns: repeat(3, 1fr); /* 3 kolom */
+  gap: 20px;
+}
+
+/* Item Berita */
+.related-news-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.related-news-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Gambar Berita */
+.related-news-image {
+  width: 100%;
+  height: 180px; /* Tinggi tetap */
+  object-fit: cover; /* Memastikan gambar proporsional */
+  border-bottom: 4px solid #007BFF; /* Garis bawah biru */
+}
+
+/* Konten Berita */
+.related-news-content {
+  padding: 10px;
+}
+
+.related-news-title-text {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 5px;
+  line-height: 1.4;
+}
+
+.related-news-meta {
+  font-size: 0.875rem;
+  color: #555;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+  .related-news-grid {
+    grid-template-columns: 1fr; /* 1 kolom untuk layar kecil */
+  }
+
+  .related-news-header {
+    flex-direction: column; /* Susun judul dan tombol secara vertikal */
+    align-items: flex-start;
+  }
+
+  .related-news-view-more {
+    margin-top: 10px; /* Tambahkan jarak untuk layar kecil */
+  }
+}
