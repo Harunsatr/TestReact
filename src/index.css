@@ -938,57 +938,186 @@ body {
   margin-bottom: 20px;
 }
 
-/* Sidebar */
+/* Sidebar berita terpopuler */
+.sidebar-popular-news-list {
+  display: flex;
+  flex-direction: column; /* Ubah menjadi kolom */
+  gap: 20px;
+}
+
+.sidebar-popular-news-item {
+  display: flex;
+  align-items: center; /* Agar teks dan gambar sejajar secara vertikal */
+  border-radius: 8px;
+  padding: 10px;
+  background-color: #fff;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sidebar-popular-news-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Nomor urut berita di sidebar */
+.sidebar-news-number {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  background-color: #000;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+/* Gambar berita di sidebar */
+.sidebar-news-image {
+  flex: 0 0 80px; /* Lebar gambar tetap */
+  height: 60px; /* Tinggi gambar tetap */
+  border-radius: 8px;
+  margin-right: 15px; /* Jarak antara gambar dan teks */
+  object-fit: cover; /* Agar gambar terpotong dengan proporsi yang benar */
+}
+/* Sidebar berita terpopuler */
 .berita-sidebar {
   background: #ffffff;
   padding: 20px;
   border-radius: 10px;
+  margin-left: 20px; /* Memberikan jarak antara sidebar dan elemen lainnya */
 }
 
-.sidebar-title {
-  font-size: 1.125rem;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-.sidebar-list {
-  list-style: none;
-  padding: 0;
-}
-
-.sidebar-item {
+.sidebar-popular-news-list {
   display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 45px; /* Menyesuaikan jarak dengan header berita */
 }
 
-.sidebar-image {
+.sidebar-popular-news-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px; /* Menyesuaikan jarak antara gambar dan konten */
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  padding: 10px;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sidebar-popular-news-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Nomor urut berita di sidebar */
+.sidebar-news-number {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #000;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #1F2B39;
+  color: #fff;
+  margin-right: 10px; /* Jarak antara nomor dan gambar */
+}
+
+/* Gambar berita */
+.sidebar-news-image {
   width: 80px;
   height: 60px;
+  border-radius: 8px;
   object-fit: cover;
-  border-radius: 5px;
 }
 
-.sidebar-text {
+/* Konten berita */
+.sidebar-news-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-news-title {
   font-size: 0.875rem;
   font-weight: bold;
-  margin: 0;
+  margin-bottom: 5px;
   color: #000;
 }
 
-.sidebar-info {
+.sidebar-news-category {
   font-size: 0.75rem;
   color: #555;
 }
 
-/* Responsif */
+.sidebar-news-category a {
+  color: #007BFF;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.sidebar-news-category a:hover {
+  text-decoration: underline;
+}
+
+/* Gambar berita di sidebar */
+.sidebar-news-image {
+  flex: 0 0 80px;
+  height: 100px;
+  width: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-right: 15px;
+}
+
+/* Konten berita di sidebar */
+.sidebar-news-content {
+  flex: 1;
+}
+
+.sidebar-news-title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #000;
+}
+
+.sidebar-news-category {
+  font-size: 0.875rem;
+  color: #555;
+}
+
+.sidebar-news-category a {
+  color: #007BFF;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.sidebar-news-category a:hover {
+  text-decoration: underline;
+}
+
+/* Responsif untuk layar kecil */
 @media (max-width: 768px) {
-  .berita-container {
-    grid-template-columns: 1fr; /* Satu kolom */
+  .berita-sidebar {
+    margin-left: 0; /* Hilangkan margin kiri pada layar kecil */
+    margin-top: 20px; /* Tambahkan margin atas untuk jarak */
   }
 
-  .berita-sidebar {
-    margin-top: 20px;
+  .sidebar-popular-news-list {
+    gap: 15px;
+  }
+
+  .sidebar-popular-news-item {
+    width: 100%;
   }
 }
 

@@ -1,5 +1,8 @@
 import React from 'react';
 import JudulBerita from '../assets/img/JudulBerita.png';
+import Gambar1 from '../assets/img/Gambar1.png';
+import Gambar2 from '../assets/img/Gambar2.png';
+import Gambar3 from '../assets/img/Gambar3.png';
 
 const Berita = () => {
     return (
@@ -44,44 +47,46 @@ const Berita = () => {
             </div>
         </div>
 
-
         {/* Sidebar Berita */}
-        <aside class="berita-sidebar">
-            <h2 class="sidebar-title">Berita Terpopuler</h2>
-            <ul class="sidebar-list">
-            <li class="sidebar-item">
-                <a href="#" class="sidebar-link">
-                <img src="path/to/image1.jpg" alt="Berita Populer 1" class="sidebar-image" />
-                <div>
-                    <p class="sidebar-text">Kenapa Eks Jenderal Israel Kritik Cara IDF Bebaskan 4 Sandera Hamas?</p>
-                    <span class="sidebar-info">Politik • 22 Jan 2024</span>
-                </div>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a href="#" class="sidebar-link">
-                <img src="path/to/image2.jpg" alt="Berita Populer 2" class="sidebar-image" />
-                <div>
-                    <p class="sidebar-text">Daftar 6 Lahan Tambang Jatah Ormas Agama, NU Dapat Bekas Grup Bakrie</p>
-                    <span class="sidebar-info">Nasional • 22 Jan 2024</span>
-                </div>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a href="#" class="sidebar-link">
-                <img src="path/to/image3.jpg" alt="Berita Populer 3" class="sidebar-image" />
-                <div>
-                    <p class="sidebar-text">Kementerian BUMN Mulai Uji Coba Pegawai Kerja 4 Hari Sepekan</p>
-                    <span class="sidebar-info">Nasional • 22 Jan 2024</span>
-                </div>
-                </a>
-            </li>
-            </ul>
+        <aside className="berita-sidebar">
+        <h2 className="section-title">Berita Terpopuler</h2>
+        <div className="sidebar-popular-news-list">
+            <div className="sidebar-popular-news-item">
+            <div className="sidebar-news-number">1</div>
+            <img src={Gambar1} alt="Berita 1" className="sidebar-news-image" />
+            <div className="sidebar-news-content">
+                <p className="sidebar-news-title">
+                Kenapa Eks Jenderal Israel Kritik Cara IDF Bebaskan 4 Sandera Hamas?
+                </p>
+                <p className="sidebar-news-category">Politik &bull; 22 Jan 2024</p>
+            </div>
+            </div>
+            <div className="sidebar-popular-news-item">
+            <div className="sidebar-news-number">2</div>
+            <img src={Gambar2} alt="Berita 2" className="sidebar-news-image" />
+            <div className="sidebar-news-content">
+                <p className="sidebar-news-title">
+                Daftar 6 Lahan Tambang Jatah Ormas Agama, NU Dapat Bekas Grup Bakrie
+                </p>
+                <p className="sidebar-news-category">Nasional &bull; 22 Jan 2024</p>
+            </div>
+            </div>
+            <div className="sidebar-popular-news-item">
+            <div className="sidebar-news-number">3</div>
+            <img src={Gambar3} alt="Berita 3" className="sidebar-news-image" />
+            <div className="sidebar-news-content">
+                <p className="sidebar-news-title">
+                Kementerian BUMN Mulai Uji Coba Pegawai Kerja 4 Hari Sepekan
+                </p>
+                <p className="sidebar-news-category">Nasional &bull; 22 Jan 2024</p>
+            </div>
+            </div>
+        </div>
         </aside>
-        
+
         {/* Komentar */}
         <div className="comments-section">
-                    <h3 className="comments-title">Komentar</h3>
+                    <h2 className="section-title">Komentar</h2>
                     <div className="comment-form">
                         <textarea placeholder="Apa yang ingin Anda tanyakan?" maxLength={500}></textarea>
                         <button className="btn-submit">Kirim</button>
